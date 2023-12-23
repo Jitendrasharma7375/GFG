@@ -62,16 +62,30 @@ class MyStack
     void push(int a)
 	{
 	    // Your code here
-	    top++;
-        arr[top] = a;
+	    if(top==1000)
+	    {
+	        return;
+	    }
+	    else 
+	    {
+	        top++;
+	        arr[top]=a;
+	    }
 	} 
 	
     //Function to remove an item from top of the stack.
 	int pop()
 	{
         // Your code here
-         if(top==-1)
-        return -1;
-        return arr[top--];
+        if(top==-1)
+	    {
+	        return -1;
+	    }
+	    else 
+	    {
+	        int temp=arr[top];
+	        top--;
+	        return temp;
+	    }
 	}
 }
