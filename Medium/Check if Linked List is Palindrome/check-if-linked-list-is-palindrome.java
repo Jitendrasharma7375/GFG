@@ -99,43 +99,41 @@ class Node
 
 class Solution
 {
+    public static Node reverse(Node head){
+        Node prev = null;
+        Node curr = head;
+        Node after = null;
+        while(curr != null){
+            after = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = after;
+            
+        }
+        return prev;
+    }
     //Function to check whether the list is palindrome.
     boolean isPalindrome(Node head) 
     {
         //Your code here
-          if(head==null || head.next==null)return true;
-        Node mid=findmid(head);
-        Node right=reverse(mid);
-        Node left=head;
-        while(right!=null){
-            if(left.data!=right.data){
+        Node slow = head;
+        Node fast = head;
+        while(fast.next != null && fast.next.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node temp = reverse(slow.next);
+        slow.next = temp;
+        Node p1 = head;
+        Node p2 = slow.next;
+        while(p2 != null){
+            if(p1.data != p2.data){
                 return false;
             }
-            left=left.next;
-            right=right.next;
+            p1 = p1.next;
+            p2 = p2.next;
         }
         return true;
-    }    
-    static Node findmid(Node head){
-        Node slow=head;
-        Node fast=head;
-        while(fast!=null && fast.next!=null){
-            slow=slow.next;
-            fast=fast.next.next;
-        }
-        return slow; //this slow we will show the middle node of the linked list
-    }
-    static Node reverse(Node head){
-        Node prev=null;
-        Node cur=head;
-        while(cur!=null){
-            Node afnode=cur.next;
-            cur.next=prev;
-            prev=cur;
-            cur=afnode;
-        }
-        head=prev;
-        return head;
     }    
 }
 
