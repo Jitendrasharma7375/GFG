@@ -32,7 +32,7 @@ import java.io.*;
 class Solution {
     boolean arraySortedOrNot(int[] arr, int n) {
         // code here
-        int length=0;
+       /* int length=0;
         for(int i=0;i<n-1;i++)
         {
             if(arr[i]<=arr[i+1])
@@ -43,6 +43,9 @@ class Solution {
         if(length==n-1)
             return true;
         else
-            return false;
+            return false;*/
+            int[] sortedArr = Arrays.copyOf(arr, n);
+        Arrays.sort(sortedArr);
+        return Arrays.equals(arr, sortedArr);
     }
 }
