@@ -46,16 +46,41 @@ class PeakElement{
 
 class Solution
 {
-	// Function to find the peak element
-	// arr[]: input array
-	// n: size of array a[]
-	public int peakElement(int[] arr,int n)
+    // Function to find the peak element
+    // arr[]: input array
+    // n: size of array a[]
+    public int peakElement(int[] arr,int n)
     {
        //add code here.
-        for(int i=0;i<n-1;i++){
-           if(arr[i]>arr[i+1])
-              return i;
+       if(n==1)return 0;
+    
+       int peak=0;
+       
+       for(int i=0;i<n;i++){
+           if(i==0){
+              
+               if(arr[i]>=arr[i+1]){
+                    return i; 
+               }
+               
+           }  
+            else if(i==(n-1)){
+                 
+                if(arr[i]>=arr[i-1]){
+                    // System.out.println(i);
+                   return i;
+                }
+              }
+            else {
+                if(arr[i-1]<=arr[i] && arr[i]>=arr[i+1]){
+                    return i;
+                }
+            } 
+            
+          
+           
        }
-       return n-1;
+       
+       return peak;
     }
 }
