@@ -28,24 +28,16 @@ public class Main {
 
 
 class Solution {
-    String removeDuplicates(String str) {
-        // code here
-        List<Character> li = new ArrayList<Character>();
+     String removeDuplicates(String str) {
+         String s1="";
         for(int i=0;i<str.length();i++)
         {
-            if(!li.contains(str.charAt(i)))
-            li.add(str.charAt(i));
+            if(s1.contains(String.valueOf(str.charAt(i)))==true)
+            continue;
+            else
+            s1+=str.charAt(i);
         }
-        StringBuilder sb = new StringBuilder();
- 
-        // Appends characters one by one
-        for (Character ch : li) {
-            sb.append(ch);
-        }
- 
-        // convert in string
-        String string = sb.toString();
-         return string;
+        return s1;
     }
 }
 
