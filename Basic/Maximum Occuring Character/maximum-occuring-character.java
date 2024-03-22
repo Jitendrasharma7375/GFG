@@ -26,21 +26,13 @@ class Solution
     //Function to find the maximum occurring character in a string.
     public static char getMaxOccuringChar(String line)
     {
-        // Your code here
         int arr[]=new int[26];
         Arrays.fill(arr,0);
         for(int i=0;i<line.length();i++)
         {
             int ch=line.charAt(i);
             int num=0;
-            if(ch>='a' && ch<='z')
-            {
-                num=ch-'a'; 
-            }
-            else 
-            {
-                num=ch-'A';
-            }
+            num=ch-'a'; 
             arr[num]++;
         }
         int max=arr[0];
@@ -49,11 +41,11 @@ class Solution
         {
             if(max<arr[i])
             {
-                ans=i;
                 max=arr[i];
+                ans=i;
             }
         }
-        int finalAns='a'+ans;
+        int finalAns=ans+'a';
         return (char) finalAns;
     }
     
