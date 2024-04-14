@@ -25,33 +25,37 @@ class Triplets{
 /*Complete the function below*/
 
 
-class Solution {
+class Solution
+{
     // arr[]: input array
     // n: size of the array
-    // Function to find triplets with zero sum.
-    public boolean findTriplets(int arr[], int n) {
-        Arrays.sort(arr); // Sort the array
-
-        for (int i = 0; i < n - 2; i++) {
-            int left = i + 1;
-            int right = n - 1;
-            int target = -arr[i]; // To find triplets with zero sum, arr[i] + arr[left] + arr[right] should be 0
-
-            while (left < right) {
-                int sum = arr[left] + arr[right];
-
-                if (sum == target) {
-                    // Triplet found
-                    return true;
-                } else if (sum < target) {
-                    left++;
-                } else {
-                    right--;
-                }
+    //Function to find triplets with zero sum.
+	public boolean findTriplets(int[] arr, int n) {
+	    Arrays.sort(arr);
+	    for(int i=0;i<n-2;i++)
+	    {
+	        if(twoSum(arr,-arr[i],i+1)) return true;
+	    }
+	    return false;
+    }
+    public boolean twoSum(int a[],int x,int i)
+    {
+        int j=a.length-1;
+        while(i<j)
+        {
+            if(a[i]+a[j]>x)
+            {
+                j--;
+            }
+            else if(a[i]+a[j]<x)
+            {
+                i++;
+            }
+            else 
+            {
+                return true;
             }
         }
-
-        // No triplet found
         return false;
     }
 }
